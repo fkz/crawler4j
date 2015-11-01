@@ -21,6 +21,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.uci.ics.crawler4j.frontier.WebURLAdditionalData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -377,9 +378,10 @@ public class CrawlController extends Configurable {
    * @param pageUrl
    *            the URL of the seed
    */
-  public void addSeed(String pageUrl) {
-    addSeed(pageUrl, -1);
+  public void addSeed(String pageUrl, WebURLAdditionalData add) {
+    addSeed(pageUrl, -1, add);
   }
+  public void addSeedSimple(String pageUrl) { addSeed(pageUrl, new WebURLAdditionalData()); }
 
   /**
    * Adds a new seed URL. A seed URL is a URL that is fetched by the crawler
@@ -400,7 +402,7 @@ public class CrawlController extends Configurable {
    *            the document id that you want to be assigned to this seed URL.
    *
    */
-  public void addSeed(String pageUrl, int docId) {
+  public void addSeed(String pageUrl, int docId, WebURLAdditionalData additionalData) {
     String canonicalUrl = URLCanonicalizer.getCanonicalURL(pageUrl);
     if (canonicalUrl == null) {
       logger.error("Invalid seed URL: {}", pageUrl);
@@ -420,7 +422,7 @@ public class CrawlController extends Configurable {
         }
       }
 
-      WebURL webUrl = new WebURL();
+      WebURL webUrl = new WebURL(additionalData);
       webUrl.setURL(canonicalUrl);
       webUrl.setDocid(docId);
       webUrl.setDepth((short) 0);

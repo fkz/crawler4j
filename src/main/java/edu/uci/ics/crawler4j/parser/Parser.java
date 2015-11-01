@@ -69,7 +69,7 @@ public class Parser extends Configurable {
         if (parseData.getHtml() == null) {
           throw new ParseException();
         }
-        parseData.setOutgoingUrls(Net.extractUrls(parseData.getHtml()));
+        parseData.setOutgoingUrls(Net.extractUrls(parseData.getHtml(), page.getWebURL().getAdditionalData()));
       } else {
         throw new NotAllowedContentException();
       }
@@ -81,7 +81,7 @@ public class Parser extends Configurable {
         } else {
           parseData.setTextContent(new String(page.getContentData(), page.getContentCharset()));
         }
-        parseData.setOutgoingUrls(Net.extractUrls(parseData.getTextContent()));
+        parseData.setOutgoingUrls(Net.extractUrls(parseData.getTextContent(), page.getWebURL().getAdditionalData()));
         page.setParseData(parseData);
       } catch (Exception e) {
         logger.error("{}, while parsing: {}", e.getMessage(), page.getWebURL().getURL());
@@ -129,7 +129,7 @@ public class Parser extends Configurable {
             !hrefLoweredCase.contains("@")) {
           String url = URLCanonicalizer.getCanonicalURL(href, contextURL);
           if (url != null) {
-            WebURL webURL = new WebURL();
+            WebURL webURL = new WebURL(page.getWebURL().getAdditionalData());
             webURL.setURL(url);
             webURL.setTag(urlAnchorPair.getTag());
             webURL.setAnchor(urlAnchorPair.getAnchor());

@@ -17,6 +17,7 @@
 
 package edu.uci.ics.crawler4j.examples.imagecrawler;
 
+import edu.uci.ics.crawler4j.frontier.WebURLAdditionalData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -62,7 +63,7 @@ public class ImageCrawlController {
     RobotstxtServer robotstxtServer = new RobotstxtServer(robotstxtConfig, pageFetcher);
     CrawlController controller = new CrawlController(config, pageFetcher, robotstxtServer);
     for (String domain : crawlDomains) {
-      controller.addSeed(domain);
+      controller.addSeed(domain, new WebURLAdditionalData());
     }
 
     ImageCrawler.configure(crawlDomains, storageFolder);

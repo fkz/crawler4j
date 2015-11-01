@@ -90,7 +90,7 @@ public class RobotstxtServer {
   }
 
   private HostDirectives fetchDirectives(URL url) {
-    WebURL robotsTxtUrl = new WebURL();
+    WebURL robotsTxtUrl = new WebURL(null);
     String host = getHost(url);
     String port = ((url.getPort() == url.getDefaultPort()) || (url.getPort() == -1)) ? "" : (":" + url.getPort());
     robotsTxtUrl.setURL("http://" + host + port + "/robots.txt");

@@ -30,7 +30,7 @@ public class WebURLTupleBinding extends TupleBinding<WebURL> {
 
   @Override
   public WebURL entryToObject(TupleInput input) {
-    WebURL webURL = new WebURL();
+    WebURL webURL = new WebURL(null);
     webURL.setURL(input.readString());
     webURL.setDocid(input.readInt());
     webURL.setParentDocid(input.readInt());
@@ -38,6 +38,7 @@ public class WebURLTupleBinding extends TupleBinding<WebURL> {
     webURL.setDepth(input.readShort());
     webURL.setPriority(input.readByte());
     webURL.setAnchor(input.readString());
+    webURL.setAdditionalData(new WebURLAdditionalDataTupleBinding().entryToObject(input));
     return webURL;
   }
 
@@ -50,5 +51,6 @@ public class WebURLTupleBinding extends TupleBinding<WebURL> {
     output.writeShort(url.getDepth());
     output.writeByte(url.getPriority());
     output.writeString(url.getAnchor());
+    new WebURLAdditionalDataTupleBinding().objectToEntry(url.getAdditionalData(), output);
   }
 }

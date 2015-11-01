@@ -83,14 +83,14 @@ public class MultipleCrawlerController {
     controller1.setCustomData(crawler1Domains);
     controller2.setCustomData(crawler2Domains);
 
-    controller1.addSeed("http://www.ics.uci.edu/");
-    controller1.addSeed("http://www.cnn.com/");
-    controller1.addSeed("http://www.ics.uci.edu/~lopes/");
-    controller1.addSeed("http://www.cnn.com/POLITICS/");
+    controller1.addSeedSimple("http://www.ics.uci.edu/");
+    controller1.addSeedSimple("http://www.cnn.com/");
+    controller1.addSeedSimple("http://www.ics.uci.edu/~lopes/");
+    controller1.addSeedSimple("http://www.cnn.com/POLITICS/");
 
-    controller2.addSeed("http://en.wikipedia.org/wiki/Main_Page");
-    controller2.addSeed("http://en.wikipedia.org/wiki/Obama");
-    controller2.addSeed("http://en.wikipedia.org/wiki/Bing");
+    controller2.addSeedSimple("http://en.wikipedia.org/wiki/Main_Page");
+    controller2.addSeedSimple("http://en.wikipedia.org/wiki/Obama");
+    controller2.addSeedSimple("http://en.wikipedia.org/wiki/Bing");
 
     /*
      * The first crawler will have 5 concurrent threads and the second

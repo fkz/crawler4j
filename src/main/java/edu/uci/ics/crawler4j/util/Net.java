@@ -5,6 +5,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import edu.uci.ics.crawler4j.frontier.WebURLAdditionalData;
 import edu.uci.ics.crawler4j.url.WebURL;
 
 /**
@@ -14,13 +15,13 @@ import edu.uci.ics.crawler4j.url.WebURL;
 public class Net {
   private static final Pattern pattern = initializePattern();
 
-  public static Set<WebURL> extractUrls(String input) {
+  public static Set<WebURL> extractUrls(String input, WebURLAdditionalData additional) {
     Set<WebURL> extractedUrls = new HashSet<>();
 
     if (input != null) {
       Matcher matcher = pattern.matcher(input);
       while (matcher.find()) {
-        WebURL webURL = new WebURL();
+        WebURL webURL = new WebURL(additional);
         String urlStr = matcher.group();
         if (!urlStr.startsWith("http")) {
           urlStr = "http://" + urlStr;

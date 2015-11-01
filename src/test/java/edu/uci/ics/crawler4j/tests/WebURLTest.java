@@ -1,5 +1,6 @@
 package edu.uci.ics.crawler4j.tests;
 
+import edu.uci.ics.crawler4j.frontier.WebURLAdditionalData;
 import org.junit.Test;
 
 import edu.uci.ics.crawler4j.url.WebURL;
@@ -13,7 +14,7 @@ public class WebURLTest {
 
   @Test
   public void testNoLastSlash() {
-    WebURL webUrl = new WebURL();
+    WebURL webUrl = new WebURL(new WebURLAdditionalData());
     webUrl.setURL("http://google.com");
   }
 }

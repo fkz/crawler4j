@@ -21,6 +21,7 @@ import java.io.Serializable;
 
 import com.sleepycat.persist.model.Entity;
 import com.sleepycat.persist.model.PrimaryKey;
+import edu.uci.ics.crawler4j.frontier.WebURLAdditionalData;
 
 /**
  * @author Yasser Ganjisaffar
@@ -44,7 +45,14 @@ public class WebURL implements Serializable {
   private String anchor;
   private byte priority;
   private String tag;
+  private WebURLAdditionalData additionalData;
 
+  public WebURLAdditionalData getAdditionalData() { return additionalData; }
+  public void setAdditionalData(WebURLAdditionalData s) { additionalData = s; }
+
+  public WebURL(WebURLAdditionalData data) {
+    additionalData = data;
+  }
 
   /**
    * @return unique document id assigned to this Url.

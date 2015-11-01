@@ -17,6 +17,7 @@
 
 package edu.uci.ics.crawler4j.examples.basic;
 
+import edu.uci.ics.crawler4j.frontier.WebURLAdditionalData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -111,9 +112,9 @@ public class BasicCrawlController {
      * URLs that are fetched and then the crawler starts following links
      * which are found in these pages
      */
-    controller.addSeed("http://www.ics.uci.edu/");
-    controller.addSeed("http://www.ics.uci.edu/~lopes/");
-    controller.addSeed("http://www.ics.uci.edu/~welling/");
+    controller.addSeed("http://www.ics.uci.edu/", new WebURLAdditionalData());
+    controller.addSeed("http://www.ics.uci.edu/~lopes/", new WebURLAdditionalData());
+    controller.addSeed("http://www.ics.uci.edu/~welling/", new WebURLAdditionalData());
 
     /*
      * Start the crawl. This is a blocking operation, meaning that your code

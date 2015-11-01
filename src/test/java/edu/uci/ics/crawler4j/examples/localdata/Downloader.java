@@ -17,6 +17,7 @@
 
 package edu.uci.ics.crawler4j.examples.localdata;
 
+import edu.uci.ics.crawler4j.frontier.WebURLAdditionalData;
 import org.apache.http.HttpStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -74,7 +75,7 @@ public class Downloader {
   }
 
   private Page download(String url) {
-    WebURL curURL = new WebURL();
+    WebURL curURL = new WebURL(new WebURLAdditionalData());
     curURL.setURL(url);
     PageFetchResult fetchResult = null;
     try {

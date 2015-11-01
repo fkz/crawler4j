@@ -347,7 +347,7 @@ public class WebCrawler implements Runnable {
               throw new RedirectException(Level.DEBUG, "Redirect page: " + curURL + " is already seen");
             }
 
-            WebURL webURL = new WebURL();
+            WebURL webURL = new WebURL(curURL.getAdditionalData());
             webURL.setURL(movedToUrl);
             webURL.setParentDocid(curURL.getParentDocid());
             webURL.setParentUrl(curURL.getParentUrl());

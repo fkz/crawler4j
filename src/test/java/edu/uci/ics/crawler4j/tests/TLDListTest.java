@@ -2,6 +2,7 @@ package edu.uci.ics.crawler4j.tests;
 
 import static org.junit.Assert.assertEquals;
 
+import edu.uci.ics.crawler4j.frontier.WebURLAdditionalData;
 import org.junit.Test;
 
 import edu.uci.ics.crawler4j.url.URLCanonicalizer;
@@ -9,7 +10,7 @@ import edu.uci.ics.crawler4j.url.WebURL;
 
 public class TLDListTest {
 
-  private final WebURL webUrl = new WebURL();
+  private final WebURL webUrl = new WebURL(new WebURLAdditionalData());
 
   private void setUrl(String url) {
     webUrl.setURL(URLCanonicalizer.getCanonicalURL(url));
